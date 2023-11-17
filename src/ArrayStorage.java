@@ -1,11 +1,11 @@
+import java.util.Arrays;
+
 /**
  * Array based storage for Resumes
  */
 public class ArrayStorage {
     Resume[] storage = new Resume[10000];
-
-    private static int size = 0;
-
+    private int size;
 
     void clear() {
         for (int i = 0; i < size; i++) {
@@ -16,8 +16,7 @@ public class ArrayStorage {
 
     void save(Resume r) {
         if (r == null) throw new IllegalArgumentException("resume not null");
-        if (size == 0) storage[0] = r;
-        else storage[size] = r;
+        storage[size] = r;
         size++;
     }
 
@@ -34,10 +33,9 @@ public class ArrayStorage {
         if (uuid == null) throw new IllegalArgumentException("uuid not null");
         for (int i = 0; i < size; i++) {
             if (storage[i].uuid.equals(uuid)) {
-                // storage[i] = null;
-                storage[i] = storage[size - 1];
-                storage[size - 1] = null;
                 size--;
+                storage[i] = storage[size];
+                storage[size] = null; //обнулениe ячейки с последним резюме после удаления
             }
         }
     }
@@ -56,4 +54,6 @@ public class ArrayStorage {
     int size() {
         return size;
     }
+
 }
+
