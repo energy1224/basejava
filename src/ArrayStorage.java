@@ -16,7 +16,7 @@ public class ArrayStorage {
         if (r == null) throw new IllegalArgumentException("Resume is not null");
         // проверка массива на заполненность
         if (storage.length == size) {
-            System.out.println("ArrayStorage is full");
+            System.out.println("Storage is full");
             return;
         }
         // проверка на уникальность резюме
@@ -31,7 +31,7 @@ public class ArrayStorage {
     Resume get(String uuid) {
         if (uuid == null) throw new IllegalArgumentException("Uuid is not null");
         for (int i = 0; i < size; i++) {
-            if (this.storage[i].uuid.equals(uuid)) {
+            if (storage[i].uuid.equals(uuid)) {
                 return storage[i];
             }
         }
@@ -41,9 +41,8 @@ public class ArrayStorage {
     void delete(String uuid) {
         if (uuid == null) throw new IllegalArgumentException("Uuid not null");
         for (int i = 0; i < size; i++) {
-            if (this.storage[i].uuid.equals(uuid)) {
-                size--;
-                storage[i] = storage[size];
+            if (storage[i].uuid.equals(uuid)) {
+                storage[i] = storage[--size];
                 storage[size] = null;
                 return;
             }
