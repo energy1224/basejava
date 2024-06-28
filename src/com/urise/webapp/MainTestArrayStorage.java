@@ -26,6 +26,7 @@ public class MainTestArrayStorage {
         System.out.println("check getAll()");
         Resume[] r= ARRAY_STORAGE.getAll();
         System.out.println(r.length);
+        System.out.println(r[2]);
         System.out.println("-------------");
         // проверка getIndex
         System.out.println("check getIndex()");
@@ -61,6 +62,8 @@ public class MainTestArrayStorage {
         printAll();
 
         System.out.println("Size: " + ARRAY_STORAGE.size());
+
+
     }
 
     static void printAll() {
